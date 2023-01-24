@@ -36,6 +36,7 @@
 .chatbox {
   flex: 1;
   background-color: #343541;
+  position: relative;
 }
 
 .App-logo {
@@ -50,17 +51,23 @@
 }
 
 .chat-input-holder {
-  padding: 12px;
+  padding: 24px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .chat-input-textarea {
   background-color: #40414f;
-  width: 100%;
+  width: 90%;
   padding: 12px;
+  color: white;
+  font-size: 1.25em;
   border-radius: 5px;
   border: none;
   outline: none;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
 }
 
 .App-header {
@@ -76,6 +83,30 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.chat-log {
+  padding: 24px;
+  text-align: left;
+}
+
+.chat-message {
+  padding: 12px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+}
+
+.avatar {
+  background: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.message {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 @keyframes App-logo-spin {
