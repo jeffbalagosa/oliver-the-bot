@@ -1,5 +1,5 @@
 {
-  "name": "oliver-the-bot",
+  "name": "oliver-the-bot-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
