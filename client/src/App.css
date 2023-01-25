@@ -86,15 +86,21 @@
 }
 
 .chat-log {
-  padding: 24px;
   text-align: left;
 }
 
-.chat-message {
-  padding: 12px;
-  padding-left: 40px;
-  padding-right: 40px;
+.chat-message.oliver-bot {
+  background-color: #444654;
+}
+
+.chat-message-center {
   display: flex;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .avatar {
@@ -102,6 +108,19 @@
   border-radius: 50%;
   width: 40px;
   height: 40px;
+}
+
+.avatar.oliver-bot {
+  background: #0da37f;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.avatar img {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 50%;
 }
 
 .message {
