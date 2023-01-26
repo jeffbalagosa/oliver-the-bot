@@ -8,14 +8,27 @@ import { useState } from "react";
 function App() {
   const [input, setInput] = useState("");
   const [chatLog, setChatLog] = useState([
-    { user: "oliver", message: "Hi, I'm Oliver. How can I help you today?" },
-    { user: "me", message: "Hi Oliver, I'm Jeff.  Nice to meet you!" },
+    { user: "oliver", message: "I am Oliver." },
+    { user: "me", message: "I am me." },
   ]);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setChatLog([...chatLog, { user: "me", message: `${input}` }]);
     setInput("");
+
+    const response = await fetch("http://localhost:3080/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: chatLog.map((message) => message.message).join(""),
+      }),
+    });
+    const data = await response.json();
+    setChatLog([...chatLog, { user: "oliver", message: `${data.message}` }]);
+    console.log(data.message);
   }
 
   return (
