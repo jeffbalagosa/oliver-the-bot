@@ -7,11 +7,14 @@ import { useState } from "react";
 
 function App() {
   const [input, setInput] = useState("");
-  const [chatLog, setChatLog] = useState([]);
+  const [chatLog, setChatLog] = useState([
+    { user: "oliver", message: "Hi, I'm Oliver. How can I help you today?" },
+    { user: "me", message: "Hi Oliver, I'm Jeff.  Nice to meet you!" },
+  ]);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setChatLog([...chatLog, { user: 'me', message: `${input}` }]);
+    setChatLog([...chatLog, { user: "me", message: `${input}` }]);
     setInput("");
   }
 
@@ -24,32 +27,16 @@ function App() {
       </aside>
       <section className="chatbox">
         <div className="chat-log">
-          <div className="chat-message">
-            <div className="chat-message-center">
-              <div className="avatar">
-                <img src={me} alt="My Profile" />
-              </div>
-              <div className="message">Hello World!</div>
-            </div>
-          </div>
-          <div className="chat-message oliver-bot">
-            <div className="chat-message-center">
-              <div className="avatar oliver-bot">
-                <img src={oliver} alt="Oliver's Profile" />
-              </div>
-              <div className="message">
-                Hello! My name is Oliver. I am your helpful AI assistant. Ask me
-                anything and I will do my best to help you.
-              </div>
-            </div>
-          </div>
+          {chatLog.map((message, index) => (
+            <ChatMessage key={index} message={message} />
+          ))}
         </div>
         <div className="chat-input-holder">
           <form onSubmit={handleSubmit}>
             <input
               rows="1"
               value={input}
-              onChange={() => setInput(input) = e.target.value}
+              onChange={(e) => setInput(e.target.value)}
               className="chat-input-textarea"
             ></input>
           </form>
@@ -58,5 +45,24 @@ function App() {
     </div>
   );
 }
+
+const ChatMessage = ({ message }) => {
+  return (
+    <div
+      className={`chat-message ${message.user === "oliver" && "oliver-bot"}`}
+    >
+      <div className="chat-message-center">
+        <div className={`avatar ${message.user === "oliver" && "oliver-bot"}`}>
+          {message.user === "oliver" ? (
+            <img src={oliver} alt="Oliver's Profile" />
+          ) : (
+            <img src={me} alt="My Profile" />
+          )}
+        </div>
+        <div className="message">{message.message}</div>
+      </div>
+    </div>
+  );
+};
 
 export default App;
