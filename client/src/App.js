@@ -56,11 +56,15 @@ function App() {
               setCurrentModel(e.target.value);
             }}
           >
-            {models.map((model, index) => (
-              <option key={model.id} value={model.id}>
-                {model.id}
-              </option>
-            ))}
+            {models && models.length > 0 ? (
+              models.map((model, index) => (
+                <option key={model.id} value={model.id}>
+                  {model.id}
+                </option>
+              ))
+            ) : (
+              <option>Loading...</option>
+            )}
           </select>
         </div>
       </aside>
