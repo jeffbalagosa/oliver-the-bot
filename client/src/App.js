@@ -11,7 +11,7 @@ function App() {
 
   const [input, setInput] = useState("");
   const [models, setModels] = useState([]);
-  const [currentModel, setCurrentModel] = useState("ada");
+  const [currentModel, setCurrentModel] = useState([]);
   const [chatLog, setChatLog] = useState([]);
 
   function clearChat() {

@@ -34,9 +34,9 @@ app.post("/", async (req, res) => {
 
 app.get("/models", async (req, res) => {
   const response = await openai.listEngines();
-  console.log(response.data.data);
+  console.log(response.data);
   res.json({
-    models: response.data.data,
+    models: response.data,
   });
 });
 
