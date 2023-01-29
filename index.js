@@ -19,13 +19,11 @@ const port = 3080;
 
 app.post("/", async (req, res) => {
   const { message, currentModel } = req.body;
-  console.log(message, "message");
-  console.log(currentModel, "currentModel");
   const response = await openai.createCompletion({
-    model: `${currentModel}`, //"text-davinci-003",
+    model: `${currentModel}`,
     prompt: `${message}`,
-    max_tokens: 100,
-    temperature: 0.5,
+    max_tokens: 1000,
+    temperature: 0.9,
   });
   res.json({
     message: response.data.choices[0].text,
@@ -34,7 +32,6 @@ app.post("/", async (req, res) => {
 
 app.get("/models", async (req, res) => {
   const response = await openai.listEngines();
-  console.log(response.data);
   res.json({
     models: response.data,
   });

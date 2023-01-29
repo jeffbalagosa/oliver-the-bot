@@ -16,12 +16,24 @@
   background-color: #202123;
 }
 
-.side-menu-button {
+.side-menu-button,
+.model-select {
   padding: 12px;
   border: 1px solid white;
   border-radius: 5px;
   text-align: left;
   transition: ease 0.25s all;
+}
+
+.models p {
+  margin-top: 2px;
+  text-align: justify;
+}
+
+.model-select {
+  max-width: 240px;
+  background-color: #202123;
+  color: white;
 }
 
 .side-menu-button:hover {

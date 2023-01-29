@@ -11,7 +11,7 @@ function App() {
 
   const [input, setInput] = useState("");
   const [models, setModels] = useState([]);
-  const [currentModel, setCurrentModel] = useState([]);
+  const [currentModel, setCurrentModel] = useState("text-davinci-003");
   const [chatLog, setChatLog] = useState([]);
 
   function clearChat() {
@@ -22,7 +22,6 @@ function App() {
     fetch("http://localhost:3080/models")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.models.data);
         setModels(data.models.data);
       });
   }
@@ -51,10 +50,13 @@ function App() {
           <span>+</span> New chat
         </div>
         <div className="models">
+          <h2>Model</h2>
           <select
+            className="model-select"
             onChange={(e) => {
               setCurrentModel(e.target.value);
             }}
+            value={currentModel}
           >
             {models && models.length > 0 ? (
               models.map((model, index) => (
@@ -66,6 +68,10 @@ function App() {
               <option>Loading...</option>
             )}
           </select>
+          <p>
+            The model which will generate the completion. Some models are
+            suitable for natural language tasks, others specialize in code.
+          </p>
         </div>
       </aside>
       <section className="chatbox">
@@ -90,6 +96,7 @@ function App() {
 }
 
 const ChatMessage = ({ message }) => {
+  console.log(message);
   return (
     <div
       className={`chat-message ${message.user === "oliver" && "oliver-bot"}`}
