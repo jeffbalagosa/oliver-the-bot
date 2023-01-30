@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const configuration = new Configuration({
   organization: "org-BoqpqXXbMfa3FW97EToE2H0z",
-  // TODO: Set up environment variables for the API key
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
