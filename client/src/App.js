@@ -1,6 +1,6 @@
 import "./normalize.css";
 import "./App.css";
-import oliver from "./pics/oliver-profile.jpg";
+import oliver from "./pics/oliverPic.png";
 import me from "./pics/myProfile.png";
 import { useState, useEffect } from "react";
 
