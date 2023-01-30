@@ -1,4 +1,4 @@
-# Project: Example Project
+# Project: Oliver The Bot (A ChatGPT Clone)
 
 ## Description:
 
