@@ -73,6 +73,31 @@ function App() {
             suitable for natural language tasks, others specialize in code.
           </p>
         </div>
+        <div>
+          <h2>API-Key</h2>
+          <p>
+            The API key is used to authenticate your requests. You can find your
+            API key in your account settings at
+            <span>
+              {" "}
+              <a
+                href="https://openai.com/api/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {" "}
+                OpenAI
+              </a>
+              .
+            </span>
+          </p>
+          <input
+            className="api-key"
+            type="password"
+            placeholder="Enter Your OpenAI API Key"
+            value={process.env.REACT_APP_OPENAI_API_KEY}
+          />
+        </div>
       </aside>
       <section className="chatbox">
         <div className="chat-log">

@@ -10,6 +10,15 @@
   bottom: 0;
 }
 
+a {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .sidemenu {
   width: 260px;
   padding: 10px;
@@ -17,7 +26,8 @@
 }
 
 .side-menu-button,
-.model-select {
+.model-select,
+.api-key {
   padding: 12px;
   border: 1px solid white;
   border-radius: 5px;
@@ -30,7 +40,9 @@
   text-align: justify;
 }
 
-.model-select {
+.model-select,
+.api-key {
+  width: 99%;
   max-width: 240px;
   background-color: #202123;
   color: white;
