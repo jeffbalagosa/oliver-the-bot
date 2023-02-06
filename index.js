@@ -1,6 +1,5 @@
 const { Configuration, OpenAIApi } = require("openai");
 const express = require("express");
-// add body parser cors to express
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const configuration = new Configuration({
