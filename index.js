@@ -20,8 +20,11 @@ app.post("/", async (req, res) => {
   const response = await openai.createCompletion({
     model: `${currentModel}`,
     prompt: `${message}`,
-    max_tokens: 1000,
     temperature: 0.9,
+    max_tokens: 2000,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0.6,
   });
   res.json({
     message: response.data.choices[0].text,
