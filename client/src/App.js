@@ -109,7 +109,11 @@ const ChatMessage = ({ message }) => {
             <img src={me} alt="My Profile" />
           )}
         </div>
-        <div className="message">{message.message}</div>
+        <div className="message">
+          {message.message.split("\n").map((line, i) => (
+            <div key={i}>{line}</div>
+          ))}
+        </div>
       </div>
     </div>
   );
