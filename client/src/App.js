@@ -91,12 +91,7 @@ function App() {
               .
             </span>
           </p>
-          <input
-            className="api-key"
-            type="password"
-            placeholder="Enter Your OpenAI API Key"
-            value={process.env.REACT_APP_OPENAI_API_KEY}
-          />
+          <input className="api-key" type="password" placeholder="API Key" />
         </div>
       </aside>
       <section className="chatbox">
