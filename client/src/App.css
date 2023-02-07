@@ -141,6 +141,11 @@
   padding-right: 40px;
 }
 
+.double-spacing {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

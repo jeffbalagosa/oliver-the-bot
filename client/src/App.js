@@ -110,7 +110,9 @@ const ChatMessage = ({ message }) => {
         </div>
         <div className="message">
           {message.message.split("\n").map((line, i) => (
-            <div key={i}>{line}</div>
+            <div className="double-spacing" key={i}>
+              {line}
+            </div>
           ))}
         </div>
       </div>
