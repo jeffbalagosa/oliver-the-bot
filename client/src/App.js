@@ -96,7 +96,6 @@ function App() {
 }
 
 const ChatMessage = ({ message }) => {
-  console.log(message);
   return (
     <div
       className={`chat-message ${message.user === "oliver" && "oliver-bot"}`}
