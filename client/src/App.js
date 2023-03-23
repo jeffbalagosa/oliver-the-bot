@@ -1,28 +1,14 @@
 import "./normalize.css";
 import "./App.css";
 import ChatMessage from "./components/ChatMessage/ChatMessage";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
-  useEffect(() => {
-    getEngines();
-  }, []);
-
   const [input, setInput] = useState("");
-  const [models, setModels] = useState([]);
-  const [currentModel, setCurrentModel] = useState("text-davinci-003");
   const [chatLog, setChatLog] = useState([]);
 
   function clearChat() {
     setChatLog([]);
-  }
-
-  function getEngines() {
-    fetch("http://localhost:3080/models")
-      .then((response) => response.json())
-      .then((data) => {
-        setModels(data.models.data);
-      });
   }
 
   async function handleSubmit(e) {
@@ -36,7 +22,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: messages, currentModel }),
+      body: JSON.stringify({ message: messages }),
     });
     const data = await response.json();
     setChatLog([...chatLogNew, { user: "oliver", message: `${data.message}` }]);
@@ -47,30 +33,6 @@ function App() {
       <aside className="sidemenu">
         <div className="side-menu-button" onClick={clearChat}>
           <span>+</span> New chat
-        </div>
-        <div className="models">
-          <h2>Model</h2>
-          <select
-            className="model-select"
-            onChange={(e) => {
-              setCurrentModel(e.target.value);
-            }}
-            value={currentModel}
-          >
-            {models && models.length > 0 ? (
-              models.map((model, index) => (
-                <option key={model.id} value={model.id}>
-                  {model.id}
-                </option>
-              ))
-            ) : (
-              <option>Loading...</option>
-            )}
-          </select>
-          <p>
-            The model which will generate the completion. Some models are
-            suitable for natural language tasks, others specialize in code.
-          </p>
         </div>
       </aside>
       <section className="chatbox">

@@ -16,9 +16,9 @@ app.use(cors());
 const port = 3080;
 
 app.post("/", async (req, res) => {
-  const { message, currentModel } = req.body;
+  const { message } = req.body;
   const response = await openai.createCompletion({
-    model: `${currentModel}`,
+    model: `text-davinci-003`,
     prompt: `${message}`,
     temperature: 0.9,
     max_tokens: 2000,
@@ -28,13 +28,6 @@ app.post("/", async (req, res) => {
   });
   res.json({
     message: response.data.choices[0].text,
-  });
-});
-
-app.get("/models", async (req, res) => {
-  const response = await openai.listEngines();
-  res.json({
-    models: response.data,
   });
 });
 
