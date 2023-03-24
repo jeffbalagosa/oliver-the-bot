@@ -15,20 +15,23 @@ app.use(cors());
 
 const port = 3080;
 
+// set bot's personna
+let conversation = [
+  {
+    role: "system",
+    content:
+      "You are a helpful and polite AI assistant named Oliver. You have vast knowledge and can help people with their problems.",
+  },
+];
+
+// send conversation to bot
 app.post("/", async (req, res) => {
-  const { message } = req.body;
-  const response = await openai.createCompletion({
-    model: `text-davinci-003`,
-    prompt: `${message}`,
-    temperature: 0.9,
-    max_tokens: 2000,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0.6,
+  const { conversation } = req.body;
+  const response = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: conversation,
   });
-  res.json({
-    message: response.data.choices[0].text,
-  });
+  res.send({ message: response.data.choices[0].message.content });
 });
 
 app.listen(port, () => {

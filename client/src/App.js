@@ -6,9 +6,23 @@ import { useState } from "react";
 function App() {
   const [input, setInput] = useState("");
   const [chatLog, setChatLog] = useState([]);
+  const [conversation, setConversation] = useState([
+    {
+      role: "system",
+      content:
+        "You are a helpful and polite AI assistant named Oliver. You have vast knowledge and can help people with their problems.",
+    },
+  ]);
 
   function clearChat() {
     setChatLog([]);
+    setConversation([
+      {
+        role: "system",
+        content:
+          "You are a helpful and polite AI assistant named Oliver. You have vast knowledge and can help people with their problems.",
+      },
+    ]);
   }
 
   async function handleSubmit(e) {
@@ -16,16 +30,20 @@ function App() {
     let chatLogNew = [...chatLog, { user: "me", message: `${input}` }];
     setInput("");
     setChatLog(chatLogNew);
-    const messages = chatLogNew.map((message) => message.message).join("\n");
+    const newConversation = [...conversation, { role: "user", content: input }];
     const response = await fetch("http://localhost:3080/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: messages }),
+      body: JSON.stringify({ conversation: newConversation }),
     });
     const data = await response.json();
     setChatLog([...chatLogNew, { user: "oliver", message: `${data.message}` }]);
+    setConversation([
+      ...newConversation,
+      { role: "assistant", content: data.message },
+    ]);
   }
 
   return (
