@@ -44,6 +44,7 @@ function App() {
       ...newConversation,
       { role: "assistant", content: data.message },
     ]);
+    console.log(`Running total of tokens used: ${data.usage.total_tokens}`);
   }
 
   return (

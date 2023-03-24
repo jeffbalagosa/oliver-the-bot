@@ -31,7 +31,10 @@ app.post("/", async (req, res) => {
     model: "gpt-3.5-turbo",
     messages: conversation,
   });
-  res.send({ message: response.data.choices[0].message.content });
+  res.send({
+    message: response.data.choices[0].message.content,
+    usage: response.data.usage,
+  });
 });
 
 app.listen(port, () => {
