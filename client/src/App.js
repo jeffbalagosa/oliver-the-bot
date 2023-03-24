@@ -45,6 +45,10 @@ function App() {
       { role: "assistant", content: data.message },
     ]);
     console.log(`Running total of tokens used: ${data.usage.total_tokens}`);
+    // if block to keep the conversation from getting too long and confusing the bot
+    if (data.usage.total_tokens > 3276) {
+      setConversation(newConversation.slice(4));
+    }
   }
 
   return (
