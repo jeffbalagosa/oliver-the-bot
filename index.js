@@ -15,15 +15,6 @@ app.use(cors());
 
 const port = 3080;
 
-// set bot's personna
-let conversation = [
-  {
-    role: "system",
-    content:
-      "You are a helpful and polite AI assistant named Oliver. You have vast knowledge and can help people with their problems.",
-  },
-];
-
 // send conversation to bot
 app.post("/", async (req, res) => {
   const { conversation } = req.body;
