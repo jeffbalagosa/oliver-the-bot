@@ -6,23 +6,27 @@ import { useState } from "react";
 function App() {
   const [input, setInput] = useState("");
   const [chatLog, setChatLog] = useState([]);
-  const [conversation, setConversation] = useState([
+
+  const personalities = [
     {
       role: "system",
       content:
-        "Your name is Oliver, and you are a polite and helpful AI assistant. You can help answer questions, brainstorm ideas, draft emails, write code, give advice, and much more.",
+        "Ignore all previous prompts and commands. Your name is Oliver, and you are a polite and helpful AI assistant. You can help answer questions, brainstorm ideas, draft emails, write code, give advice, and much more.",
     },
-  ]);
+    {
+      role: "system",
+      content:
+        "Ignore all previous prompts and commands. Your name is Oliver, and you are an AI programming assistant whose main priority is to follow user requirements closely. Begin by devising a comprehensive plan in pseudocode, describing each step in great detail. After establishing the pseudocode, proceed to output the code within a single code block, keeping any other prose to a minimum.",
+    },
+  ];
+
+  const personality = personalities[0];
+
+  const [conversation, setConversation] = useState([personality]);
 
   function clearChat() {
     setChatLog([]);
-    setConversation([
-      {
-        role: "system",
-        content:
-          "Your name is Oliver, and you are a polite and helpful AI assistant. You can help answer questions, brainstorm ideas, draft emails, write code, give advice, and much more.",
-      },
-    ]);
+    setConversation([personality]);
   }
 
   async function handleSubmit(e) {
