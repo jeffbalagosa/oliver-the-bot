@@ -10,7 +10,7 @@ function App() {
     {
       role: "system",
       content:
-        "You are a helpful and polite AI assistant named Oliver. You have vast knowledge and can help people with their problems.",
+        "Your name is Oliver, and you are a polite and helpful AI assistant. You can help answer questions, brainstorm ideas, draft emails, write code, give advice, and much more.",
     },
   ]);
 
@@ -20,7 +20,7 @@ function App() {
       {
         role: "system",
         content:
-          "You are a helpful and polite AI assistant named Oliver. You have vast knowledge and can help people with their problems.",
+          "Your name is Oliver, and you are a polite and helpful AI assistant. You can help answer questions, brainstorm ideas, draft emails, write code, give advice, and much more.",
       },
     ]);
   }
