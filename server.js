@@ -21,6 +21,7 @@ app.post("/", async (req, res) => {
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: conversation,
+    temperature: 0.6,
   });
   res.send({
     message: response.data.choices[0].message.content,

@@ -48,7 +48,8 @@
 .chatbox {
   flex: 1;
   background-color: #343541;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -64,10 +65,7 @@
 
 .chat-input-holder {
   padding: 24px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  flex-shrink: 0;
 }
 
 .chat-input-textarea {
@@ -100,6 +98,10 @@
 
 .chat-log {
   text-align: left;
+  height: calc(
+    100vh - 100px
+  ); /* Adjust this value based on the height you want for the chat log */
+  overflow-y: auto;
 }
 
 .chat-message.oliver-bot {
