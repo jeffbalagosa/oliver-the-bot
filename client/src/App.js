@@ -61,6 +61,10 @@ function App() {
         <div className="side-menu-button" onClick={clearChat}>
           <span>+</span> New chat
         </div>
+        <section className="aside-section">
+          <label for="api-key">OpenAI API-Key:</label>
+          <input type="password" id="api-key" name="api-key" />
+        </section>
       </aside>
       <section className="chatbox">
         <div className="chat-log">
