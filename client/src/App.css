@@ -16,24 +16,12 @@
   background-color: #202123;
 }
 
-.side-menu-button,
-.model-select {
+.side-menu-button {
   padding: 12px;
   border: 1px solid white;
   border-radius: 5px;
   text-align: left;
   transition: ease 0.25s all;
-}
-
-.models p {
-  margin-top: 2px;
-  text-align: justify;
-}
-
-.model-select {
-  max-width: 240px;
-  background-color: #202123;
-  color: white;
 }
 
 .side-menu-button:hover {
@@ -68,21 +56,6 @@
   border: none;
   outline: none;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 .chat-log {
