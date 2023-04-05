@@ -17,7 +17,17 @@ const personalities = [
   },
 ];
 
-const personality = personalities[0];
+const personalityNames = {
+  "General Assistant": 0,
+  "General Coding Assistant": 1,
+};
+
+function getPersonalityByName(name) {
+  const index = personalityNames[name];
+  return index !== undefined ? personalities[index] : null;
+}
+
+const personality = getPersonalityByName("General Assistant");
 
 function App() {
   const [input, setInput] = useState("");
