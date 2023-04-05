@@ -17,8 +17,13 @@ const port = 3080;
 
 // send conversation to bot
 app.post("/", async (req, res) => {
-  const { conversation } = req.body;
-  const response = await openai.createChatCompletion({
+  const { conversation, apiKey } = req.body;
+  const openaiConfig = new Configuration({
+    organization: "org-BoqpqXXbMfa3FW97EToE2H0z",
+    apiKey: apiKey || process.env.OPENAI_API_KEY,
+  });
+  const openaiInstance = new OpenAIApi(openaiConfig);
+  const response = await openaiInstance.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: conversation,
     temperature: 0.6,

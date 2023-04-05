@@ -22,7 +22,9 @@ function App() {
 
   const personality = personalities[0];
 
+  // States
   const [conversation, setConversation] = useState([personality]);
+  const [apiKey, setApiKey] = useState("");
 
   function clearChat() {
     setChatLog([]);
@@ -40,7 +42,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ conversation: newConversation }),
+      body: JSON.stringify({ conversation: newConversation, apiKey }),
     });
     const data = await response.json();
     setChatLog([...chatLogNew, { user: "oliver", message: `${data.message}` }]);
@@ -63,7 +65,13 @@ function App() {
         </div>
         <section className="aside-section">
           <label for="api-key">OpenAI API-Key:</label>
-          <input type="password" id="api-key" name="api-key" />
+          <input
+            type="password"
+            id="api-key"
+            name="api-key"
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+          />
         </section>
       </aside>
       <section className="chatbox">
