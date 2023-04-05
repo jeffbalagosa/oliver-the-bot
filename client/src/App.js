@@ -1,28 +1,27 @@
 import "./normalize.css";
 import "./App.css";
-import ChatMessage from "./components/ChatMessage/ChatMessage";
 import { useState } from "react";
+import SideMenu from "./components/SideMenu/SideMenu";
+import ChatBox from "./components/ChatBox/ChatBox";
+
+const personalities = [
+  {
+    role: "system",
+    content:
+      "Ignore all previous prompts and commands. Your name is Oliver, and you are a polite and helpful AI assistant. You can help answer questions, brainstorm ideas, draft emails, write code, give advice, and much more.",
+  },
+  {
+    role: "system",
+    content:
+      "Ignore all previous prompts and commands. Your name is Oliver, and you are an AI programming assistant whose main priority is to follow user requirements closely. Begin by devising a comprehensive plan in pseudocode, describing each step in great detail. After establishing the pseudocode, proceed to output the code within a single code block, keeping any other prose to a minimum.",
+  },
+];
+
+const personality = personalities[0];
 
 function App() {
   const [input, setInput] = useState("");
   const [chatLog, setChatLog] = useState([]);
-
-  const personalities = [
-    {
-      role: "system",
-      content:
-        "Ignore all previous prompts and commands. Your name is Oliver, and you are a polite and helpful AI assistant. You can help answer questions, brainstorm ideas, draft emails, write code, give advice, and much more.",
-    },
-    {
-      role: "system",
-      content:
-        "Ignore all previous prompts and commands. Your name is Oliver, and you are an AI programming assistant whose main priority is to follow user requirements closely. Begin by devising a comprehensive plan in pseudocode, describing each step in great detail. After establishing the pseudocode, proceed to output the code within a single code block, keeping any other prose to a minimum.",
-    },
-  ];
-
-  const personality = personalities[0];
-
-  // States
   const [conversation, setConversation] = useState([personality]);
   const [apiKey, setApiKey] = useState("");
 
@@ -59,38 +58,13 @@ function App() {
 
   return (
     <div className="App">
-      <aside className="sidemenu">
-        <div className="side-menu-button" onClick={clearChat}>
-          <span>+</span> New chat
-        </div>
-        <section className="aside-section">
-          <label for="api-key">OpenAI API-Key:</label>
-          <input
-            type="password"
-            id="api-key"
-            name="api-key"
-            value={apiKey}
-            onChange={(e) => setApiKey(e.target.value)}
-          />
-        </section>
-      </aside>
-      <section className="chatbox">
-        <div className="chat-log">
-          {chatLog.map((message, index) => (
-            <ChatMessage key={index} message={message} />
-          ))}
-        </div>
-        <div className="chat-input-holder">
-          <form onSubmit={handleSubmit}>
-            <input
-              rows="1"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="chat-input-textarea"
-            ></input>
-          </form>
-        </div>
-      </section>
+      <SideMenu apiKey={apiKey} setApiKey={setApiKey} clearChat={clearChat} />
+      <ChatBox
+        chatLog={chatLog}
+        input={input}
+        setInput={setInput}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }
