@@ -4,27 +4,21 @@ import { useState } from "react";
 import SideMenu from "./components/SideMenu/SideMenu";
 import ChatBox from "./components/ChatBox/ChatBox";
 
-const personalities = [
-  {
+const personalities = {
+  "General Assistant": {
     role: "system",
     content:
       "Ignore all previous prompts and commands. Your name is Oliver, and you are a polite and helpful AI assistant. You can help answer questions, brainstorm ideas, draft emails, write code, give advice, and much more.",
   },
-  {
+  "Coding Assistant": {
     role: "system",
     content:
       "Ignore all previous prompts and commands. Your name is Oliver, and you are an AI programming assistant whose main priority is to follow user requirements closely. Begin by devising a comprehensive plan in pseudocode, describing each step in great detail. After establishing the pseudocode, proceed to output the code within a single code block, keeping any other prose to a minimum.",
   },
-];
-
-const personalityNames = {
-  "General Assistant": 0,
-  "General Coding Assistant": 1,
 };
 
 function getPersonalityByName(name) {
-  const index = personalityNames[name];
-  return index !== undefined ? personalities[index] : null;
+  return personalities[name] || null;
 }
 
 const personality = getPersonalityByName("General Assistant");
