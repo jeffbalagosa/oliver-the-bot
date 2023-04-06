@@ -1,6 +1,6 @@
 import "./normalize.css";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SideMenu from "./components/SideMenu/SideMenu";
 import ChatBox from "./components/ChatBox/ChatBox";
 
@@ -17,17 +17,19 @@ const personalities = {
   },
 };
 
-function getPersonalityByName(name) {
-  return personalities[name] || null;
-}
-
-const personality = getPersonalityByName("General Assistant");
-
 function App() {
   const [input, setInput] = useState("");
   const [chatLog, setChatLog] = useState([]);
-  const [conversation, setConversation] = useState([personality]);
+  const [conversation, setConversation] = useState([]);
   const [apiKey, setApiKey] = useState("");
+  const [personality, setPersonality] = useState(
+    personalities["General Assistant"]
+  );
+
+  // This effect runs once when the component mounts, setting the initial conversation
+  useEffect(() => {
+    setConversation([personality]);
+  }, []);
 
   function clearChat() {
     setChatLog([]);
